@@ -161,7 +161,7 @@ public partial class MainForm : Form
 
     private void Discord(object sender, EventArgs e) => Process.Start(new ProcessStartInfo("https://discord.com/invite/bVrUdUJzJe") { UseShellExecute = true });
 
-    private void Github(object sender, EventArgs e) => Process.Start(new ProcessStartInfo("https://github.com/HalfDragonLucy/Guilty-Gear-Command-List-Editor/issues") { UseShellExecute = true });
+    private void Github(object sender, EventArgs e) => Process.Start(new ProcessStartInfo("https://github.com/HalfDragonLucy/TextModEditor/wiki") { UseShellExecute = true });
 
     private void DragEnterMainForm(object sender, DragEventArgs e)
     {

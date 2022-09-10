@@ -25,7 +25,7 @@ public partial class MainForm : Form
     {
         if (UI.Controls.Count > 1)
         {
-            if (MessageBox.Show("Are you sure you want to import a new file and overwrite your current progress?", "Importing File", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you serious about importing a new file and overwriting your current progress?", "Importing File", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (ImportFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -191,7 +191,7 @@ public partial class MainForm : Form
     {
         if (UI.Controls.Count > 1)
         {
-            if (MessageBox.Show("Are you sure you want to import a new file and overwrite your current progress?", "Importing File", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you serious about importing a new file and overwriting your current progress?", "Importing File", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
                 var file = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -204,7 +204,7 @@ public partial class MainForm : Form
 
     private void ClearFile(object sender, EventArgs e)
     {
-        if (MessageBox.Show("Are you sure you want to delete all your entries?", "Clearing Entries", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        if (MessageBox.Show("Do you really want to delete all your entries?", "Clearing Entries", MessageBoxButtons.YesNo) == DialogResult.Yes)
         {
 
             UI.SuspendLayout();
@@ -228,9 +228,12 @@ public partial class MainForm : Form
 
     private void ExportNotif_MouseClick(object sender, MouseEventArgs e)
     {
-        Show();
-        WindowState = FormWindowState.Normal;
-        ExportNotif.Visible = false;
+        if (e.Button == MouseButtons.Left)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            ExportNotif.Visible = false;
+        }
     }
 
     private void ShowDiscordForm(object sender, EventArgs e)

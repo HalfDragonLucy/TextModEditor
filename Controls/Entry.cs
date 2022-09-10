@@ -41,7 +41,7 @@ public partial class Entry : UserControl
 
     private void DeleteEntry(object sender, EventArgs e)
     {
-        if (MessageBox.Show("Are you sure you want to delete this entry?", "Deleting Entry", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        if (MessageBox.Show("Do you really want to remove this entry?", "Deleting Entry", MessageBoxButtons.YesNo) == DialogResult.Yes)
         {
             header = HeaderBox.Text;
             body = BodyBox.Text;

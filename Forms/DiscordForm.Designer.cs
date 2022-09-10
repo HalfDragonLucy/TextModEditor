@@ -76,7 +76,7 @@ partial class DiscordForm
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.richTextBox1.Size = new System.Drawing.Size(240, 85);
             this.richTextBox1.TabIndex = 12;
-            this.richTextBox1.Text = "If you need help or have feedback in this tool you can show the discord below\n\nht" +
+            this.richTextBox1.Text = "If you need help & have feedback for this tool you can join the discord below\n\nht" +
     "tps://discord.com/invite/bVrUdUJzJe";
             // 
             // DiscordForm

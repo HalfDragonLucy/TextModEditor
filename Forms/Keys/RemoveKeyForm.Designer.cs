@@ -76,18 +76,18 @@ partial class RemoveKeyForm
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 21);
+            this.label2.Size = new System.Drawing.Size(127, 21);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Worded";
+            this.label2.Text = "Human-readable";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 21);
+            this.label1.Size = new System.Drawing.Size(40, 21);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Literal";
+            this.label1.Text = "Raw";
             // 
             // LiteralBox
             // 

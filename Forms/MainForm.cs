@@ -11,7 +11,7 @@ public partial class MainForm : Form
 {
     public string loadedFile = string.Empty;
     public bool canExport = false;
-    public static Entry trash;
+    public static Entry bin;
 
     public MainForm()
     {
@@ -106,8 +106,7 @@ public partial class MainForm : Form
         IconExportBtn.Enabled = canExport;
         IconExportBtn.Enabled = UI.Controls.Count > 1;
         IconClearBtn.Enabled = UI.Controls.Count > 1;
-
-        UndoBtn.Enabled = trash != null;
+        UndoBtn.Enabled = bin != null;
     }
 
     private void LoadFile(string fileName)
@@ -245,15 +244,15 @@ public partial class MainForm : Form
     private void Undo(object sender, EventArgs e)
     {
         UI.SuspendLayout();
-        UI.Controls.Add(trash);
-        UI.Controls.SetChildIndex(trash, UI.Controls.Count - 2);
-        trash = null;
+        UI.Controls.Add(bin);
+        UI.Controls.SetChildIndex(bin, UI.Controls.Count - 2);
+        bin = null;
         UI.ResumeLayout();
     }
 
     private void ListenForKeys(object sender, KeyEventArgs e)
     {
-        if (e.Control && e.KeyCode == Keys.Z && trash != null)
+        if (e.Control && e.KeyCode == Keys.Z && bin != null)
         {
             Undo(sender, new EventArgs());
         }

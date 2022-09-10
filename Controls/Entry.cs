@@ -45,7 +45,7 @@ public partial class Entry : UserControl
         {
             header = HeaderBox.Text;
             body = BodyBox.Text;
-            MainForm.trash = new Entry(entryNumber, header, body);
+            MainForm.bin = new Entry(entryNumber, header, body);
             Dispose();
         }
     }

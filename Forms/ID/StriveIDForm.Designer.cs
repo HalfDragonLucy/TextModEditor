@@ -40,7 +40,8 @@ partial class StriveIDForm
             // IDBox
             // 
             this.IDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.IDBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.IDBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.IDBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.IDBox.ForeColor = System.Drawing.Color.White;
             this.IDBox.FormattingEnabled = true;
             this.IDBox.Items.AddRange(new object[] {

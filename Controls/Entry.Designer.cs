@@ -28,9 +28,11 @@ partial class Entry
     /// </summary>
     private void InitializeComponent()
     {
+            this.components = new System.ComponentModel.Container();
             this.EntryBox = new System.Windows.Forms.GroupBox();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BodyBox = new System.Windows.Forms.RichTextBox();
+            this.ContextReadable = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.HeaderBox = new System.Windows.Forms.TextBox();
             this.EntryBox.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +48,9 @@ partial class Entry
             this.EntryBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EntryBox.ForeColor = System.Drawing.Color.White;
             this.EntryBox.Location = new System.Drawing.Point(0, 0);
+            this.EntryBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EntryBox.Name = "EntryBox";
+            this.EntryBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.EntryBox.Size = new System.Drawing.Size(355, 212);
             this.EntryBox.TabIndex = 0;
             this.EntryBox.TabStop = false;
@@ -61,7 +65,8 @@ partial class Entry
             this.BtnDelete.FlatAppearance.BorderSize = 0;
             this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDelete.ForeColor = System.Drawing.Color.White;
-            this.BtnDelete.Location = new System.Drawing.Point(319, 14);
+            this.BtnDelete.Location = new System.Drawing.Point(318, 14);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(30, 29);
             this.BtnDelete.TabIndex = 2;
@@ -75,15 +80,24 @@ partial class Entry
             this.BodyBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.BodyBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.BodyBox.CausesValidation = false;
+            this.BodyBox.ContextMenuStrip = this.ContextReadable;
             this.BodyBox.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BodyBox.ForeColor = System.Drawing.Color.White;
             this.BodyBox.Location = new System.Drawing.Point(6, 50);
+            this.BodyBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.BodyBox.Name = "BodyBox";
             this.BodyBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.BodyBox.Size = new System.Drawing.Size(343, 156);
             this.BodyBox.TabIndex = 1;
             this.BodyBox.TabStop = false;
             this.BodyBox.Text = "";
+            this.BodyBox.Enter += new System.EventHandler(this.ClearBodyPlaceHolder);
+            this.BodyBox.Leave += new System.EventHandler(this.AddBodyPlaceHolder);
+            // 
+            // ContextReadable
+            // 
+            this.ContextReadable.Name = "ContextReadable";
+            this.ContextReadable.Size = new System.Drawing.Size(181, 26);
             // 
             // HeaderBox
             // 
@@ -93,12 +107,15 @@ partial class Entry
             this.HeaderBox.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HeaderBox.ForeColor = System.Drawing.Color.White;
             this.HeaderBox.Location = new System.Drawing.Point(6, 15);
+            this.HeaderBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.HeaderBox.MaxLength = 50;
             this.HeaderBox.Name = "HeaderBox";
             this.HeaderBox.Size = new System.Drawing.Size(159, 21);
             this.HeaderBox.TabIndex = 0;
             this.HeaderBox.TabStop = false;
             this.HeaderBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.HeaderBox.Enter += new System.EventHandler(this.ClearHeaderPlaceHolder);
+            this.HeaderBox.Leave += new System.EventHandler(this.AddHeaderPlaceHolder);
             // 
             // Entry
             // 
@@ -107,6 +124,7 @@ partial class Entry
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.EntryBox);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Entry";
             this.Size = new System.Drawing.Size(355, 212);
             this.EntryBox.ResumeLayout(false);
@@ -121,4 +139,5 @@ partial class Entry
     private Button BtnDelete;
     public RichTextBox BodyBox;
     public TextBox HeaderBox;
+    private ContextMenuStrip ContextReadable;
 }

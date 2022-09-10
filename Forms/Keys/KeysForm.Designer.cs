@@ -28,44 +28,32 @@ partial class KeysForm
     /// </summary>
     private void InitializeComponent()
     {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KeysForm));
-            this.LiteralList = new System.Windows.Forms.ListBox();
-            this.WordedList = new System.Windows.Forms.ListBox();
+            this.RawList = new System.Windows.Forms.ListBox();
             this.BtnAddKey = new System.Windows.Forms.Button();
             this.BtnRemoveKey = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.SyncTimer = new System.Windows.Forms.Timer(this.components);
+            this.WordedList = new TextModEditor.Controls.NoScrollBarListBox();
             this.SuspendLayout();
             // 
-            // LiteralList
+            // RawList
             // 
-            this.LiteralList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.LiteralList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LiteralList.Font = new System.Drawing.Font("Dosis", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LiteralList.ForeColor = System.Drawing.Color.White;
-            this.LiteralList.FormattingEnabled = true;
-            this.LiteralList.ItemHeight = 21;
-            this.LiteralList.Location = new System.Drawing.Point(0, 47);
-            this.LiteralList.Margin = new System.Windows.Forms.Padding(4);
-            this.LiteralList.Name = "LiteralList";
-            this.LiteralList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.LiteralList.Size = new System.Drawing.Size(165, 590);
-            this.LiteralList.TabIndex = 1;
-            // 
-            // WordedList
-            // 
-            this.WordedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
-            this.WordedList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.WordedList.Font = new System.Drawing.Font("Dosis", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.WordedList.ForeColor = System.Drawing.Color.White;
-            this.WordedList.FormattingEnabled = true;
-            this.WordedList.ItemHeight = 21;
-            this.WordedList.Location = new System.Drawing.Point(301, 47);
-            this.WordedList.Margin = new System.Windows.Forms.Padding(4);
-            this.WordedList.Name = "WordedList";
-            this.WordedList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.WordedList.Size = new System.Drawing.Size(175, 590);
-            this.WordedList.TabIndex = 2;
+            this.RawList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.RawList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RawList.ColumnWidth = 1;
+            this.RawList.Font = new System.Drawing.Font("Dosis", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RawList.ForeColor = System.Drawing.Color.White;
+            this.RawList.FormattingEnabled = true;
+            this.RawList.ItemHeight = 21;
+            this.RawList.Location = new System.Drawing.Point(18, 33);
+            this.RawList.Margin = new System.Windows.Forms.Padding(4);
+            this.RawList.Name = "RawList";
+            this.RawList.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.RawList.Size = new System.Drawing.Size(165, 590);
+            this.RawList.TabIndex = 1;
             // 
             // BtnAddKey
             // 
@@ -74,10 +62,10 @@ partial class KeysForm
             this.BtnAddKey.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnAddKey.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnAddKey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAddKey.Location = new System.Drawing.Point(172, 517);
+            this.BtnAddKey.Location = new System.Drawing.Point(18, 631);
             this.BtnAddKey.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAddKey.Name = "BtnAddKey";
-            this.BtnAddKey.Size = new System.Drawing.Size(124, 52);
+            this.BtnAddKey.Size = new System.Drawing.Size(348, 52);
             this.BtnAddKey.TabIndex = 3;
             this.BtnAddKey.Text = "Add Key";
             this.BtnAddKey.UseVisualStyleBackColor = false;
@@ -90,10 +78,10 @@ partial class KeysForm
             this.BtnRemoveKey.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnRemoveKey.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnRemoveKey.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRemoveKey.Location = new System.Drawing.Point(172, 577);
+            this.BtnRemoveKey.Location = new System.Drawing.Point(18, 691);
             this.BtnRemoveKey.Margin = new System.Windows.Forms.Padding(4);
             this.BtnRemoveKey.Name = "BtnRemoveKey";
-            this.BtnRemoveKey.Size = new System.Drawing.Size(124, 52);
+            this.BtnRemoveKey.Size = new System.Drawing.Size(348, 52);
             this.BtnRemoveKey.TabIndex = 4;
             this.BtnRemoveKey.Text = "Remove Key";
             this.BtnRemoveKey.UseVisualStyleBackColor = false;
@@ -103,23 +91,42 @@ partial class KeysForm
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(47, 12);
+            this.label1.Location = new System.Drawing.Point(74, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 21);
+            this.label1.Size = new System.Drawing.Size(40, 21);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Literal";
+            this.label1.Text = "Raw";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(355, 12);
+            this.label2.Location = new System.Drawing.Point(213, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 21);
+            this.label2.Size = new System.Drawing.Size(127, 21);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Worded";
+            this.label2.Text = "Human-readable";
+            // 
+            // SyncTimer
+            // 
+            this.SyncTimer.Enabled = true;
+            this.SyncTimer.Tick += new System.EventHandler(this.SyncTimer_Tick);
+            // 
+            // WordedList
+            // 
+            this.WordedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.WordedList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.WordedList.ForeColor = System.Drawing.Color.White;
+            this.WordedList.FormattingEnabled = true;
+            this.WordedList.ItemHeight = 22;
+            this.WordedList.Location = new System.Drawing.Point(190, 33);
+            this.WordedList.Name = "WordedList";
+            this.WordedList.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.WordedList.ShowScrollbar = false;
+            this.WordedList.Size = new System.Drawing.Size(176, 596);
+            this.WordedList.TabIndex = 7;
             // 
             // KeysForm
             // 
@@ -127,13 +134,13 @@ partial class KeysForm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(477, 645);
+            this.ClientSize = new System.Drawing.Size(382, 755);
+            this.Controls.Add(this.WordedList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BtnRemoveKey);
             this.Controls.Add(this.BtnAddKey);
-            this.Controls.Add(this.WordedList);
-            this.Controls.Add(this.LiteralList);
+            this.Controls.Add(this.RawList);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
@@ -149,10 +156,11 @@ partial class KeysForm
 
     #endregion
 
-    private ListBox LiteralList;
-    private ListBox WordedList;
+    private ListBox RawList;
     private Button BtnAddKey;
     private Button BtnRemoveKey;
     private Label label1;
     private Label label2;
+    private System.Windows.Forms.Timer SyncTimer;
+    private TextModEditor.Controls.NoScrollBarListBox WordedList;
 }

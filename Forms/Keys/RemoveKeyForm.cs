@@ -19,4 +19,12 @@ public partial class RemoveKeyForm : Form
     private void ConfirmKey(object sender, EventArgs e) => KeysManager.Remove(LiteralBox.SelectedItem.ToString(), WordedBox.SelectedItem.ToString());
 
     private void CheckIfBoxSelected(object sender, EventArgs e) => BtnConfirm.Enabled = LiteralBox.SelectedItem != null && WordedBox.SelectedItem != null;
+
+    private void LiteralBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (LiteralBox.SelectedIndex != 0)
+        {
+            WordedBox.SelectedIndex = LiteralBox.SelectedIndex;
+        }
+    }
 }

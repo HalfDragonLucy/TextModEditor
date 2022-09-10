@@ -92,6 +92,7 @@ partial class RemoveKeyForm
             // LiteralBox
             // 
             this.LiteralBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.LiteralBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LiteralBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.LiteralBox.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LiteralBox.ForeColor = System.Drawing.Color.White;
@@ -100,10 +101,12 @@ partial class RemoveKeyForm
             this.LiteralBox.Name = "LiteralBox";
             this.LiteralBox.Size = new System.Drawing.Size(293, 30);
             this.LiteralBox.TabIndex = 12;
+            this.LiteralBox.SelectedIndexChanged += new System.EventHandler(this.LiteralBox_SelectedIndexChanged);
             // 
             // WordedBox
             // 
             this.WordedBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
+            this.WordedBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WordedBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.WordedBox.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WordedBox.ForeColor = System.Drawing.Color.White;

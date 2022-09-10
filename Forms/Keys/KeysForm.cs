@@ -9,7 +9,7 @@ public partial class KeysForm : Form
 
         KeysManager.GetKeys();
 
-        LiteralList.Items.AddRange(KeysManager.literal.ToArray());
+        RawList.Items.AddRange(KeysManager.literal.ToArray());
         WordedList.Items.AddRange(KeysManager.worded.ToArray());
     }
 
@@ -28,6 +28,19 @@ public partial class KeysForm : Form
         if (removeKeyForm.ShowDialog() == DialogResult.OK)
         {
             MessageBox.Show("A restart is required to update the keys.\nTo not loose your progress please export your file before leaving.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+
+    private void SyncTimer_Tick(object sender, EventArgs e)
+    {
+        if (WordedList.TopIndex != RawList.TopIndex)
+        {
+            WordedList.TopIndex = RawList.TopIndex;
+        }
+
+        if (WordedList.SelectedIndex != RawList.SelectedIndex)
+        {
+            WordedList.SelectedIndex = RawList.SelectedIndex;
         }
     }
 }

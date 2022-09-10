@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Keys\literal.keys">
+    <None Update="Keys\raw.keys">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Keys\worded.keys">

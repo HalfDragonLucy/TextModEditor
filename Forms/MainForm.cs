@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TextModEditor.Controls;
+using TextModEditor.Forms;
 using TextModEditor.Scripts;
 
 namespace CommandListEditor;
@@ -9,8 +10,8 @@ namespace CommandListEditor;
 public partial class MainForm : Form
 {
     public string loadedFile = string.Empty;
-
     public bool canExport = false;
+    public static Entry trash;
 
     public MainForm()
     {
@@ -22,11 +23,26 @@ public partial class MainForm : Form
 
     private void ImportFile(object sender, EventArgs e)
     {
-        if (ImportFileDialog.ShowDialog() == DialogResult.OK)
+        if (UI.Controls.Count > 1)
         {
-            loadedFile = ImportFileDialog.SafeFileName;
-            LoadFile(ImportFileDialog.FileName);
+            if (MessageBox.Show("Are you sure you want to import a new file and overwrite your current progress?", "Importing File", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (ImportFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    loadedFile = ImportFileDialog.SafeFileName;
+                    LoadFile(ImportFileDialog.FileName);
+                }
+            }
         }
+        else
+        {
+            if (ImportFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                loadedFile = ImportFileDialog.SafeFileName;
+                LoadFile(ImportFileDialog.FileName);
+            }
+        }
+
     }
 
     private void ExportFile(object sender, EventArgs e)
@@ -90,6 +106,8 @@ public partial class MainForm : Form
         IconExportBtn.Enabled = canExport;
         IconExportBtn.Enabled = UI.Controls.Count > 1;
         IconClearBtn.Enabled = UI.Controls.Count > 1;
+
+        UndoBtn.Enabled = trash != null;
     }
 
     private void LoadFile(string fileName)
@@ -159,8 +177,6 @@ public partial class MainForm : Form
         }
     }
 
-    private void Discord(object sender, EventArgs e) => Process.Start(new ProcessStartInfo("https://discord.com/invite/bVrUdUJzJe") { UseShellExecute = true });
-
     private void Github(object sender, EventArgs e) => Process.Start(new ProcessStartInfo("https://github.com/HalfDragonLucy/TextModEditor/wiki") { UseShellExecute = true });
 
     private void DragEnterMainForm(object sender, DragEventArgs e)
@@ -173,20 +189,70 @@ public partial class MainForm : Form
 
     private void DragDropMainForm(object sender, DragEventArgs e)
     {
-        var file = (string[])e.Data.GetData(DataFormats.FileDrop);
-        LoadFile(file[0]);
+        if (UI.Controls.Count > 1)
+        {
+            if (MessageBox.Show("Are you sure you want to import a new file and overwrite your current progress?", "Importing File", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+                var file = (string[])e.Data.GetData(DataFormats.FileDrop);
+                LoadFile(file[0]);
+            }
+        }
     }
 
     private void ExitApp(object sender, EventArgs e) => Application.Exit();
 
     private void ClearFile(object sender, EventArgs e)
     {
-        UI.SuspendLayout();
-        UI.Controls.Clear();
-        UI.Controls.Add(new AddEntry(this));
-        UI.ResumeLayout();
+        if (MessageBox.Show("Are you sure you want to delete all your entries?", "Clearing Entries", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
 
-        canExport = false;
-        loadedFile = string.Empty;
+            UI.SuspendLayout();
+            UI.Controls.Clear();
+            UI.Controls.Add(new AddEntry(this));
+            UI.ResumeLayout();
+
+            canExport = false;
+            loadedFile = string.Empty;
+        }
+    }
+
+    private void MainForm_Resize(object sender, EventArgs e)
+    {
+        if (WindowState == FormWindowState.Minimized)
+        {
+            Hide();
+            ExportNotif.Visible = true;
+        }
+    }
+
+    private void ExportNotif_MouseClick(object sender, MouseEventArgs e)
+    {
+        Show();
+        WindowState = FormWindowState.Normal;
+        ExportNotif.Visible = false;
+    }
+
+    private void ShowDiscordForm(object sender, EventArgs e)
+    {
+        var d = new DiscordForm();
+        d.ShowDialog();
+    }
+
+    private void Undo(object sender, EventArgs e)
+    {
+        UI.SuspendLayout();
+        UI.Controls.Add(trash);
+        UI.Controls.SetChildIndex(trash, UI.Controls.Count - 2);
+        trash = null;
+        UI.ResumeLayout();
+    }
+
+    private void ListenForKeys(object sender, KeyEventArgs e)
+    {
+        if (e.Control && e.KeyCode == Keys.Z && trash != null)
+        {
+            Undo(sender, new EventArgs());
+        }
     }
 }

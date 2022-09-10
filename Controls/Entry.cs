@@ -24,13 +24,63 @@ public partial class Entry : UserControl
         HeaderBox.SelectionStart = 0;
         BodyBox.SelectionStart = 0;
 
+        for (var i = 0; i < KeysManager.worded.Count; i++)
+        {
+            var button = new ToolStripButton(KeysManager.worded[i]);
+            button.Click += new EventHandler((sender, e) => AppendContextText(button.Text));
+            ContextReadable.Items.Add(button);
+        }
+
         HeaderBox.ResumeLayout();
         BodyBox.ResumeLayout();
 
         Select();
     }
 
-    private void DeleteEntry(object sender, EventArgs e) => Dispose();
+    private void AppendContextText(string txt) => BodyBox.SelectedText = txt;
+
+    private void DeleteEntry(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Are you sure you want to delete this entry?", "Deleting Entry", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+            header = HeaderBox.Text;
+            body = BodyBox.Text;
+            MainForm.trash = new Entry(entryNumber, header, body);
+            Dispose();
+        }
+    }
+
+    private void ClearHeaderPlaceHolder(object sender, EventArgs e)
+    {
+        if (HeaderBox.Text == "Header")
+        {
+            HeaderBox.Text = string.Empty;
+        }
+    }
+
+    private void ClearBodyPlaceHolder(object sender, EventArgs e)
+    {
+        if (BodyBox.Text == "Body")
+        {
+            BodyBox.Text = string.Empty;
+        }
+    }
+
+    private void AddHeaderPlaceHolder(object sender, EventArgs e)
+    {
+        if (HeaderBox.Text == string.Empty)
+        {
+            HeaderBox.Text = "Header";
+        }
+    }
+
+    private void AddBodyPlaceHolder(object sender, EventArgs e)
+    {
+        if (BodyBox.Text == string.Empty)
+        {
+            BodyBox.Text = "Body";
+        }
+    }
 
     private static string ParseText(string body)
     {

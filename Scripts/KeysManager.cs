@@ -1,7 +1,7 @@
 ﻿namespace TextModEditor.Scripts;
 internal class KeysManager
 {
-    private static readonly string litPath = "Keys/literal.keys", worPath = "Keys/worded.keys";
+    private static readonly string litPath = "Keys/raw.keys", worPath = "Keys/worded.keys";
 
     public static List<string> literal = new();
     public static List<string> worded = new();

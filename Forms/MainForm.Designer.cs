@@ -39,6 +39,7 @@ partial class MainForm
             this.BtnID = new System.Windows.Forms.ToolStripMenuItem();
             this.guiltyGearStriveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnKeys = new System.Windows.Forms.ToolStripMenuItem();
+            this.UndoBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
             this.discordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +69,7 @@ partial class MainForm
             this.TopMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1,
             this.BtnEdit,
+            this.UndoBtn,
             this.toolStripDropDownButton3});
             this.TopMenu.Location = new System.Drawing.Point(0, 0);
             this.TopMenu.Name = "TopMenu";
@@ -160,11 +162,20 @@ partial class MainForm
             // 
             this.BtnKeys.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.BtnKeys.ForeColor = System.Drawing.Color.White;
-            this.BtnKeys.Image = global::TextModEditor.Properties.Resources.Key;
+            this.BtnKeys.Image = global::TextModEditor.Properties.Resources.Keyboard;
             this.BtnKeys.Name = "BtnKeys";
             this.BtnKeys.Size = new System.Drawing.Size(108, 26);
             this.BtnKeys.Text = "Keys";
             this.BtnKeys.Click += new System.EventHandler(this.ShowKeys);
+            // 
+            // UndoBtn
+            // 
+            this.UndoBtn.Image = global::TextModEditor.Properties.Resources.Undo;
+            this.UndoBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UndoBtn.Name = "UndoBtn";
+            this.UndoBtn.Size = new System.Drawing.Size(63, 40);
+            this.UndoBtn.Text = "Undo";
+            this.UndoBtn.Click += new System.EventHandler(this.Undo);
             // 
             // toolStripDropDownButton3
             // 
@@ -184,9 +195,9 @@ partial class MainForm
             this.discordToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.discordToolStripMenuItem.Image = global::TextModEditor.Properties.Resources.Discord;
             this.discordToolStripMenuItem.Name = "discordToolStripMenuItem";
-            this.discordToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.discordToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.discordToolStripMenuItem.Text = "Discord";
-            this.discordToolStripMenuItem.Click += new System.EventHandler(this.Discord);
+            this.discordToolStripMenuItem.Click += new System.EventHandler(this.ShowDiscordForm);
             // 
             // githubToolStripMenuItem
             // 
@@ -194,7 +205,7 @@ partial class MainForm
             this.githubToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.githubToolStripMenuItem.Image = global::TextModEditor.Properties.Resources.Bookmark;
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.githubToolStripMenuItem.Text = "Documentation";
             this.githubToolStripMenuItem.Click += new System.EventHandler(this.Github);
             // 
@@ -240,7 +251,7 @@ partial class MainForm
             this.ExportNotif.BalloonTipTitle = "Text Mod Editor - Export";
             this.ExportNotif.ContextMenuStrip = this.IconMenu;
             this.ExportNotif.Icon = ((System.Drawing.Icon)(resources.GetObject("ExportNotif.Icon")));
-            this.ExportNotif.Visible = true;
+            this.ExportNotif.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ExportNotif_MouseClick);
             // 
             // IconMenu
             // 
@@ -305,12 +316,15 @@ partial class MainForm
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Text Mod Editor";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropMainForm);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnterMainForm);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListenForKeys);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.TopMenu.ResumeLayout(false);
             this.TopMenu.PerformLayout();
             this.IconMenu.ResumeLayout(false);
@@ -344,4 +358,5 @@ partial class MainForm
     private ToolStripMenuItem IconClearBtn;
     private ToolStripSeparator toolStripSeparator1;
     private ToolStripMenuItem BtnClear;
+    private ToolStripButton UndoBtn;
 }

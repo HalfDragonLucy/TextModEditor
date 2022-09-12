@@ -97,7 +97,7 @@ partial class Entry
             // ContextReadable
             // 
             this.ContextReadable.Name = "ContextReadable";
-            this.ContextReadable.Size = new System.Drawing.Size(181, 26);
+            this.ContextReadable.Size = new System.Drawing.Size(61, 4);
             // 
             // HeaderBox
             // 
@@ -119,8 +119,7 @@ partial class Entry
             // 
             // Entry
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.EntryBox);
             this.DoubleBuffered = true;

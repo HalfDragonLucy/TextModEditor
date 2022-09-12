@@ -44,15 +44,15 @@ partial class KeysForm
             this.RawList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(23)))), ((int)(((byte)(23)))));
             this.RawList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RawList.ColumnWidth = 1;
-            this.RawList.Font = new System.Drawing.Font("Dosis", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RawList.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.RawList.ForeColor = System.Drawing.Color.White;
             this.RawList.FormattingEnabled = true;
-            this.RawList.ItemHeight = 21;
+            this.RawList.ItemHeight = 22;
             this.RawList.Location = new System.Drawing.Point(18, 33);
             this.RawList.Margin = new System.Windows.Forms.Padding(4);
             this.RawList.Name = "RawList";
             this.RawList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.RawList.Size = new System.Drawing.Size(165, 590);
+            this.RawList.Size = new System.Drawing.Size(165, 596);
             this.RawList.TabIndex = 1;
             // 
             // BtnAddKey
@@ -130,8 +130,7 @@ partial class KeysForm
             // 
             // KeysForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(382, 755);
@@ -144,7 +143,6 @@ partial class KeysForm
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "KeysForm";

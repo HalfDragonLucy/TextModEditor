@@ -44,9 +44,9 @@ partial class AddKeyForm
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(11, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 22);
+            this.label1.Size = new System.Drawing.Size(36, 22);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Literal";
+            this.label1.Text = "Raw";
             // 
             // LiteralBox
             // 
@@ -71,9 +71,9 @@ partial class AddKeyForm
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(11, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 22);
+            this.label2.Size = new System.Drawing.Size(112, 22);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Worded";
+            this.label2.Text = "Human-readable";
             // 
             // BtnCancel
             // 
@@ -114,8 +114,7 @@ partial class AddKeyForm
             // 
             // AddKeyForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 22F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(264, 199);
@@ -127,7 +126,6 @@ partial class AddKeyForm
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Dosis", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddKeyForm";
